@@ -58,11 +58,39 @@ python3 metapeek.py --version
 
 ### Autostart
 
-Add it to **System Settings → Autostart → Add Application**, with the command:
+Run MetaPeek automatically on login. Two options:
+
+**Option A — one command (recommended).** From the cloned repo, run:
+
+```bash
+make install-autostart
+```
+
+This drops an XDG autostart entry at `~/.config/autostart/metapeek.desktop`
+pointing at the current checkout. Remove it any time with `make uninstall-autostart`.
+
+**Option B — KDE GUI.** System Settings → **Autostart** → **Add Application…**
+→ enter the command:
 
 ```
 python3 /full/path/to/metapeek/metapeek.py
 ```
+
+<details>
+<summary>What the autostart entry looks like (if you want to write it by hand)</summary>
+
+Create `~/.config/autostart/metapeek.desktop`:
+
+```ini
+[Desktop Entry]
+Type=Application
+Name=MetaPeek
+Comment=Hold Meta to peek at pinned taskbar shortcuts
+Exec=python3 /full/path/to/metapeek/metapeek.py
+X-KDE-autostart-phase=2
+Terminal=false
+```
+</details>
 
 ## Configure
 
